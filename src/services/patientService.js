@@ -21,9 +21,9 @@ let postBookAppointment = (data)=>{
                   });
                   if(user && user[0]){
                     await db.Booking.findOrCreate({
-                        where:{patientId: user[0].id},
+                        where:{patientId: user[0].id}, //1 id chi tao 1 lan lich hen, tranh spam
                         defaults:{
-                            statusId:'S1',
+                            statusId:'S1', // tu dong them voi trang thai la s1
                             doctorId:data.doctorId,
                             patientId: user[0].id,
                             date: data.date,
