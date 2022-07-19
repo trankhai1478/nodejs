@@ -38,6 +38,7 @@ let innitWebRoutes =(app)=>{
     router.post('/api/create-new-specialty',specialtyController.createSpecialty);
     router.get('/api/get-all-specialty',specialtyController.getAllSpecialty);
     router.delete('/api/delete-specialty',specialtyController.handleDeleteSpecialty);
+    router.get('/api/get-detail-specialty-by-id',specialtyController.getDetailSpecialtyById);
     return app.use("/",router);
 }
 
