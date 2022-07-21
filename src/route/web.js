@@ -43,10 +43,10 @@ let innitWebRoutes =(app)=>{
     router.put('/api/edit-specialty',specialtyController.handleEditSpecialty);
 
     router.post('/api/create-new-clinic',clinicController.createClinic);
-    // router.get('/api/get-all-specialty',specialtyController.getAllSpecialty);
-    // router.delete('/api/delete-specialty',specialtyController.handleDeleteSpecialty);
-    // router.get('/api/get-detail-specialty-by-id',specialtyController.getDetailSpecialtyById);
-    // router.put('/api/edit-specialty',specialtyController.handleEditSpecialty);
+    router.get('/api/get-all-clinic',clinicController.getAllClinic);
+    router.delete('/api/delete-clinic',clinicController.handleDeleteClinic);
+    router.get('/api/get-detail-clinic-by-id',clinicController.getDetailClinicById);
+     router.put('/api/edit-clinic',clinicController.handleEditClinic);
 
 
     return app.use("/",router);
