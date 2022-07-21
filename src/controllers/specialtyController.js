@@ -1,3 +1,4 @@
+
 import specialtySerive from '../services/specialtyService';
 
 let createSpecialty = async(req, res)=>{
@@ -50,9 +51,15 @@ let getDetailSpecialtyById =async (req, res)=>{
         })
     }
 }
+let handleEditSpecialty= async(req, res)=>{
+    let data = req.body; 
+    let message=await specialtySerive.updateSpecialty(data);
+    return res.status(200).json(message)
+}
 module.exports = {
     createSpecialty:createSpecialty,
     getAllSpecialty:getAllSpecialty,
     handleDeleteSpecialty:handleDeleteSpecialty,
-    getDetailSpecialtyById:getDetailSpecialtyById
+    getDetailSpecialtyById:getDetailSpecialtyById,
+    handleEditSpecialty:handleEditSpecialty,
 }

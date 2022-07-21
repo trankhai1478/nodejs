@@ -113,9 +113,54 @@ let getDetailSpecialtyById =(inputId,location)=>{
         }
     })
 }
+let updateSpecialty = (data) =>{
+    return new Promise(async(resolve, reject)=>{
+        try{
+            // if(!data.image || !data.name ){
+            //     resolve({
+            //         errCode:2,
+            //         errMessage:'Miss required parameter'
+            //     }) 
+            // }
+            let Specialty= await db.Specialty.findOne({
+                where: { id: data.id},
+                raw:false
+            })
+            if(Specialty){    
+                Specialty.name=  data.name; 
+                Specialty.image=data.imageBase64;
+                Specialty.descriptionHTML=data.descriptionHTML;
+                Specialty.descriptionMarkdown=data.descriptionMarkdown;
+                // if(data.avatar){
+                //     Specialty.image= data.image;
+                // }
+               
+                await Specialty.save();    
+                // await db.User.save(
+                // {
+                //     firstName: data.firstName,
+                //     lastName:data.lastName,
+                //     address:data.address   
+                // },{where:{id:userId}})
+                resolve({
+                    errCode:0,
+                    message:'update the user succeeds'
+                })                        
+            }else{
+                resolve({
+                    errCode:1,
+                    errMessage:'User not find'
+                });
+            }             
+        }catch(e){
+            reject(e);
+        }
+    })
+}
 module.exports={
     createSpecialty:createSpecialty,
     getAllSpecialty:getAllSpecialty,
     deleteSpecialty:deleteSpecialty,
-    getDetailSpecialtyById:getDetailSpecialtyById
+    getDetailSpecialtyById:getDetailSpecialtyById,
+    updateSpecialty:updateSpecialty
 }
